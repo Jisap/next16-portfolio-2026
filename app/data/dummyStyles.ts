@@ -60,7 +60,7 @@ export const homePageStyles = {
 
   // Inline span adjustments
   spanInline: "inline-block align-middle",
-  spanWithMargin: "inline-block mt-22 md:mt-8 sm:mt-8 lg:mt-8 xl:mt-8 align-middle z-20"
+  spanWithMargin: "inline-block mt-3 md:mt-8 sm:mt-8 lg:mt-8 xl:mt-8 align-middle z-20"
 };
 
 export const spotlightStyles = {
