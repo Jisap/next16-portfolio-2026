@@ -3,6 +3,17 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
+// Aproximación del ancho del texto en unidades SVG según número de caracteres.
+// Se usa 38 unidades por carácter (ajustado para Helvetica bold a font-size ~28px en viewBox de altura 100)
+// más un padding horizontal de 20 unidades a cada lado.
+const getViewBox = (text: string) => {
+  const charWidth = 38;
+  const paddingX = 20;
+  const height = 100;
+  const width = Math.max(300, text.length * charWidth + paddingX * 2);
+  return { viewBox: `0 0 ${width} ${height}`, width };
+};
+
 export const TextHoverEffect = ({
   text,
   duration,
@@ -15,6 +26,8 @@ export const TextHoverEffect = ({
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
   const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
+
+  const { viewBox } = getViewBox(text);
 
   useEffect(() => {
     if (svgRef.current && cursor.x !== null && cursor.y !== null) {
@@ -33,7 +46,7 @@ export const TextHoverEffect = ({
       ref={svgRef}
       width="100%"
       height="100%"
-      viewBox="0 0 300 100"
+      viewBox={viewBox}
       xmlns="http://www.w3.org/2000/svg"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

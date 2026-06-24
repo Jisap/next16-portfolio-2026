@@ -23,7 +23,7 @@ const Footer = () => {
     <footer className="relative mx-auto pb-12 md:pb-0 lg:pb-0 xl:pb-0 max-w-300 bg-zinc-950 border-t border-zinc-800 text-zinc-300 overflow-hidden">
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-20 py-5">
         <div className="text-lg cursor-pointer">Reach out →</div>
-        <TextHoverEffect text="ACET" />
+        <TextHoverEffect text="JisapDev" />
         <div className="text-lg">{timeNow}</div>
       </div>
     </footer>
