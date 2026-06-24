@@ -494,7 +494,7 @@ export const sidebarStyles = {
   footerText: "mt-6 text-sm text-zinc-400",
 
   // Mobile menu overlay
-  mobileOverlay: "md:hidden fixed inset-0 z-[60] transition-all duration-300",
+  mobileOverlay: "md:hidden fixed inset-0 z-[90] transition-all duration-300",
   mobileOverlayVisible: "opacity-100",
   mobileOverlayHidden: "opacity-0 pointer-events-none",
   mobileOverlayBg: "absolute inset-0 bg-black transition-opacity duration-300",
@@ -536,12 +536,12 @@ export const sidebarStyles = {
   bottomNavContainer: "mx-auto w-full px-4 pb-4",
   bottomNavInner: "max-w-lg mx-auto",
   bottomNavBar: "bg-zinc-900/95 backdrop-blur-sm border border-zinc-800 px-2 py-2 flex items-center gap-2 shadow-2xl shadow-black/40 rounded-xl",
-  bottomNavGrid: "grid grid-cols-6 gap-1 flex-1",
+  bottomNavGrid: "grid grid-cols-7 gap-1 flex-1",
   bottomNavLink: "p-2 rounded-lg transition-all duration-200 flex items-center justify-center",
   bottomNavLinkActive: "text-zinc-50 bg-zinc-800",
   bottomNavLinkInactive: "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50",
   bottomNavIcon: "w-4 h-4",
   bottomNavDivider: "h-6 w-px bg-zinc-800",
-  bottomMenuButton: "p-2 rounded-lg text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50 transition-colors",
+  bottomMenuButton: "p-2 rounded-lg text-zinc-100 bg-zinc-800/80 border border-zinc-700 hover:bg-zinc-750 hover:text-white transition-all duration-200 flex items-center justify-center w-full h-full shadow-md",
   bottomMenuIcon: "w-4 h-4",
 };

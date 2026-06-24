@@ -377,9 +377,8 @@ const Sidebar = (): React.ReactElement => {
                     />
                   </Link>
                 ))}
-              </div>
 
-              <div className={s.bottomNavDivider}>
+
                 <button
                   onClick={() => setIsMobileMenuOpen(true)}
                   className={s.bottomMenuButton}
@@ -387,7 +386,9 @@ const Sidebar = (): React.ReactElement => {
                 >
                   <MenuIcon className={s.bottomMenuIcon} />
                 </button>
+
               </div>
+
             </div>
           </div>
         </div>
