@@ -1,6 +1,7 @@
-"use client";
-import React, { useRef, useEffect, useState } from "react";
-import { motion } from "motion/react";
+"use client"
+
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 export const TextHoverEffect = ({
   text,
@@ -40,12 +41,14 @@ export const TextHoverEffect = ({
       className="select-none"
     >
       <defs>
+        {/* FIX: linearGradient uses x1/y1/x2/y2, not cx/cy/r (those are radialGradient attrs) */}
         <linearGradient
           id="textGradient"
           gradientUnits="userSpaceOnUse"
-          cx="50%"
-          cy="50%"
-          r="25%"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="0%"
         >
           {hovered && (
             <>
@@ -58,25 +61,23 @@ export const TextHoverEffect = ({
           )}
         </linearGradient>
 
-        <motion.radialGradient
+        {/*
+          FIX: <motion.radialGradient> is not a valid Framer Motion element.
+          SVG filter/gradient primitives are not part of the DOM and cannot be
+          animated directly by Framer Motion. Instead we drive cx/cy via the
+          maskPosition state that is already updated in the useEffect above.
+        */}
+        <radialGradient
           id="revealMask"
           gradientUnits="userSpaceOnUse"
           r="20%"
-          initial={{ cx: "50%", cy: "50%" }}
-          animate={maskPosition}
-          transition={{ duration: duration ?? 0, ease: "easeOut" }}
-
-        // example for a smoother animation below
-
-        //   transition={{
-        //     type: "spring",
-        //     stiffness: 300,
-        //     damping: 50,
-        //   }}
+          cx={maskPosition.cx}
+          cy={maskPosition.cy}
         >
           <stop offset="0%" stopColor="white" />
           <stop offset="100%" stopColor="black" />
-        </motion.radialGradient>
+        </radialGradient>
+
         <mask id="textMask">
           <rect
             x="0"
@@ -87,6 +88,8 @@ export const TextHoverEffect = ({
           />
         </mask>
       </defs>
+
+      {/* Static outline — fades in on hover */}
       <text
         x="50%"
         y="50%"
@@ -98,6 +101,8 @@ export const TextHoverEffect = ({
       >
         {text}
       </text>
+
+      {/* Animated stroke draw-on */}
       <motion.text
         x="50%"
         y="50%"
@@ -106,17 +111,13 @@ export const TextHoverEffect = ({
         strokeWidth="0.3"
         className="fill-transparent stroke-neutral-200 font-[helvetica] text-7xl font-bold dark:stroke-neutral-800"
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
-        animate={{
-          strokeDashoffset: 0,
-          strokeDasharray: 1000,
-        }}
-        transition={{
-          duration: 4,
-          ease: "easeInOut",
-        }}
+        animate={{ strokeDashoffset: 0, strokeDasharray: 1000 }}
+        transition={{ duration: 4, ease: "easeInOut" }}
       >
         {text}
       </motion.text>
+
+      {/* Gradient reveal layer driven by mouse position */}
       <text
         x="50%"
         y="50%"
