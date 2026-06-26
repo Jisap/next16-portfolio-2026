@@ -66,10 +66,10 @@ export default function Home(): React.ReactElement {
                       stroke="currentColor"
                       aria-hidden
                     >
-                      <path d="M7 17L17 7M17 7H7M17 7V17" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M3 12l9-9 9 9" strokeWidth="1.2" />
                     </svg>
 
-                    <div className={homePageStyles.calloutCard.button}>
+                    <div className={homePageStyles.calloutCard.text}>
                       Connect with me on X
                     </div>
                   </div>
