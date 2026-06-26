@@ -2,7 +2,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { projectDetailStyles as s } from "../../data/dummyStyles"
 import { getProjectBySlug, getAllProjectSlugs } from "@/lib/projects-data"
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, Package } from "lucide-react";
 import { FaYoutube, FaGithub, FaInstagram } from "react-icons/fa";
 
 interface ProjectPageProps {
@@ -122,6 +122,78 @@ const ProjectPageProps = async ({ params }: ProjectPageProps) => {
                     </span>
                   </div>
                 ))}
+              </div>
+            </section>
+          </div>
+
+          <div className={s.sidebar}>
+            <section>
+              <h3 className={s.sidebarSectionTitle}>
+                Tech Stack
+              </h3>
+
+              <div className={s.techStackContainer}>
+                {project.techStack.map((tech) => (
+                  <span className={s.techStackItem} key={tech}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </section>
+
+            <section>
+              <h3 className={s.sidebarSectionTitle}>
+                Projects Links
+              </h3>
+
+              <div className={s.sidebarSectionTitle}>
+                {project.links.github && (
+                  <a
+                    href={project.links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={s.linkCard}
+                  >
+                    <FaGithub className={s.buttonIcon} />
+                    <span className={s.linkText}>View Source Code</span>
+                  </a>
+                )}
+
+                {project.links.visit && (
+                  <a
+                    href={project.links.visit}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={s.linkCard}
+                  >
+                    <ExternalLink className={s.buttonIcon} />
+                    <span className={s.linkText}>Live Demo</span>
+                  </a>
+                )}
+
+                {project.links.pypi && (
+                  <a
+                    href={project.links.howIBuilt}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={s.linkCard}
+                  >
+                    <Package className={s.buttonIcon} />
+                    <span className={s.linkText}>Pypi Package</span>
+                  </a>
+                )}
+
+                {project.links.youtube && (
+                  <a
+                    href={project.links.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={s.linkCard}
+                  >
+                    <FaYoutube className={s.buttonIcon} />
+                    <span className={s.linkText}>Video tutorial</span>
+                  </a>
+                )}
               </div>
             </section>
           </div>
