@@ -4,6 +4,7 @@ import { projectDetailStyles as s } from "../../data/dummyStyles"
 import { getProjectBySlug, getAllProjectSlugs } from "@/lib/projects-data"
 import { ArrowLeft, ExternalLink, Package } from "lucide-react";
 import { FaYoutube, FaGithub, FaInstagram } from "react-icons/fa";
+import { BackgroundBeams } from "@/app/components/ui/background-beams";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -196,9 +197,57 @@ const ProjectPageProps = async ({ params }: ProjectPageProps) => {
                 )}
               </div>
             </section>
+
+            <section className={s.sidebarSection}>
+              <h3 className={s.sidebarSectionTitle}>
+                Project Info
+              </h3>
+
+              <div className={s.projectInfoContainer}>
+                <div>
+                  <p className={s.projectInfoLabel}>
+                    Author
+                  </p>
+
+                  <div className={s.authorContainer}>
+                    <img
+                      src={project.authorAvatar}
+                      alt={project.author}
+                      className={s.authorAvatar}
+                    />
+
+                    <p className={s.authorName}>
+                      {project.author}
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <p className={s.projectInfoLabel}>
+                    Status
+                  </p>
+
+                  <p className={s.projectInfoText}>
+                    {project.status}
+                  </p>
+                </div>
+
+                <div>
+                  <p className={s.projectInfoLabel}>
+                    Category
+                  </p>
+
+                  <p className={s.projectInfoText}>
+                    {project.tags[0]}
+                  </p>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </div>
+
+      <BackgroundBeams />
     </div>
   )
 }
