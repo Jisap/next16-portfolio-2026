@@ -38,9 +38,13 @@ export default function Home(): React.ReactElement {
 
         <section className={homePageStyles.heroSection}>
           <div className="relative">
-            <h1 className={homePageStyles.spanWithMargin}>
-              <Cover>JisapDev</Cover>
+            <h1 className={homePageStyles.h1}>
+              Hey, I&apos;m{" "}
+              <span className={homePageStyles.spanWithMargin}>
+                <Cover>JisapDev</Cover>
+              </span>
             </h1>
+
 
             <h2 className={homePageStyles.h2}>
               AI Product {"  "}
@@ -108,8 +112,40 @@ export default function Home(): React.ReactElement {
                 >
                   <source src="/homevideo.webm" type="video/webm" />
                   Your browser does not support the video tag.
-
                 </video>
+              </div>
+
+              <div className={homePageStyles.article.content}>
+                <div className={homePageStyles.article.header}>
+                  <svg className={homePageStyles.article.headerIcon} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                  </svg>
+
+                  <span>
+                    Featured Work
+                  </span>
+                </div>
+
+                <h3 className={homePageStyles.article.title}>
+                  My 2025: shippings, signal, and a few uncomfortable rules
+                </h3>
+
+                <p className={homePageStyles.article.description}>
+                  A candid review of 2025 into 2026. The video above showcase some of the key project and learnings along the way
+                </p>
+
+                <div className={homePageStyles.article.linkContainer}>
+                  <Link
+                    href="/project"
+                    className={homePageStyles.article.link}
+                  >
+                    <span>See My Projects</span>
+
+                    <svg className={homePageStyles.article.linkIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
             </article>
           </div>
