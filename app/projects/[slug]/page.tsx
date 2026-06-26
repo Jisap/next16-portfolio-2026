@@ -102,6 +102,28 @@ const ProjectPageProps = async ({ params }: ProjectPageProps) => {
                 </p>
               </div>
             </section>
+
+            <section>
+              <h2 className={s.sectionTitle}>
+                Learning Outcomes
+              </h2>
+
+              <div className={s.learningOutcomesGrid}>
+                {project.learningOutcomes.map((learningOutcome, index) => (
+                  <div className={s.learningOutcomeCard} key={index}>
+                    <div className={s.learningOutcomeNumber}>
+                      <span className={s.learningOutcomeNumberText}>
+                        {index + 1}
+                      </span>
+                    </div>
+
+                    <span className={s.learningOutcomeText}>
+                      {learningOutcome}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </section>
           </div>
         </div>
       </div>
