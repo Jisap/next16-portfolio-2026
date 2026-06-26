@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import { projectDetailStyles as s } from "../../data/dummyStyles"
 import { getProjectBySlug, getAllProjectSlugs } from "@/lib/projects-data"
 import { ArrowLeft, ExternalLink, Package } from "lucide-react";
-import { FaYoutube, FaGithub, FaInstagram } from "react-icons/fa";
+import { FaYoutube, FaGithub } from "react-icons/fa";
 import { BackgroundBeams } from "@/app/components/ui/background-beams";
 
 interface ProjectPageProps {
@@ -72,7 +72,7 @@ const ProjectPageProps = async ({ params }: ProjectPageProps) => {
                   href={project.links.howIBuilt}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={s.buttonIcon}
+                  className={s.secondaryButton}
                 >
                   <FaYoutube className={s.buttonIcon} />
                   How I Built It
@@ -147,7 +147,7 @@ const ProjectPageProps = async ({ params }: ProjectPageProps) => {
                 Projects Links
               </h3>
 
-              <div className={s.sidebarSectionTitle}>
+              <div className={s.linksContainer}>
                 {project.links.github && (
                   <a
                     href={project.links.github}
