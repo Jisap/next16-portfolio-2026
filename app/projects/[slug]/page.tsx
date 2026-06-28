@@ -252,4 +252,34 @@ const ProjectPageProps = async ({ params }: ProjectPageProps) => {
   )
 }
 
+export async function generateStaticParams() {
+  return getAllProjectSlugs().map((slug) => ({ slug }))
+}
+
+export async function generateMetadata({ params }: ProjectPageProps) {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
+  if (!project) {
+    return {
+      title: 'Project not found'
+    }
+  }
+
+  return {
+    title: `${project.title} - JisapDev Digital Services`,
+    description: project.description,
+    openGraph: {
+      title: project.title,
+      description: project.description,
+      images: [
+        {
+          url: project.image,
+          alt: project.title
+        }
+      ]
+    }
+  }
+
+}
+
 export default ProjectPageProps
