@@ -189,8 +189,6 @@ export const timelineStyles = {
   textCyan: "text-cyan-400",
 };
 
-
-
 export const aboutPageStyles = {
   // Layout and container styles
   pageContainer: "flex min-h-screen pt-20 w-full items-start justify-center bg-zinc-950 px-6 py-12 md:px-12 md:py-20 lg:px-16",
